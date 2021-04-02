@@ -1,0 +1,21 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create # 자동으로 테이블을 만들어줌
+    properties:
+      hibernate :
+#        show_sql: true
+        format_sql: true
+
+  datasource:
+    sql-script-encoding: utf-8
+    driverClassName: org.postgresql.Driver #데이터 소스 설정
+    url: jdbc:postgresql://localhost:5432/test
+    username: mac
+    password: root
+
+
+logging.level:
+  org.hibernate.SQL: debug # JPA 가 실행하는 SQL이 모두 보이게 함
+#  org.hibernate.type: trace
+

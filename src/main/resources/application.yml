@@ -22,4 +22,6 @@ logging.level:
   org.hibernate.SQL: debug # JPA 가 실행하는 SQL이 모두 보이게 함
 #  org.hibernate.type: trace
 
+server:
+  port=80:
 

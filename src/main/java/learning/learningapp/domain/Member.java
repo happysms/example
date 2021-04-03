@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class Member {
     @Column(name = "member_id")  // DB 컬럼 명 설정
     private Long id;
 
+    @NotEmpty
     private String name;
 
     @Embedded
@@ -24,3 +26,14 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>(); // 컬렉션은 필드에서 바로 초기화하는 것이 안전하다. (null 문제로부터)
 }
+
+
+
+
+
+
+
+
+
+
+

@@ -15,6 +15,4 @@ public class OrderSearch {
 
     private OrderStatus orderStatus; // 주문 상태(Order, Cancel)
 
-
-
 }

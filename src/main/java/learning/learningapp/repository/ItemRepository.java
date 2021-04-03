@@ -17,7 +17,7 @@ public class ItemRepository {
         if (item.getId() == null){ //ITEM 은 JPA에 저장하기 전까지 id 값이 없다. 그렇기에 신규 등록
             em.persist(item);
         }else{
-            em.merge(item);  // 업데이트와 비슷한 맥락
+            em.merge(item);  // 업데이트와 비슷한 맥락 하지만 입력이 안된 필드가 있다면 null 로 업데이트 될 가능성이 있다. 대부분 변경감지가 더 낫다.
         }
     }
 

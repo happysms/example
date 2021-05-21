@@ -2,6 +2,8 @@ package learning.learningapp.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.BatchSize;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ public class Order {
     @JoinColumn(name = "member_id")
     private Member member; //주문 회원  외래키 , 값을 변경하면 다른 멤버로 변경이 된다.   // FetchType.LAZY인 경우에는 bytebuddyintercepter 로 대신 바인딩이 되어있다.(프록시 기술)
 
+    @BatchSize(size = 1000)
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)  // Cascade로 order만 persist하면 arderitem도 모두 persist한다.
     private List<OrderItem> orderItems = new ArrayList<>();
 

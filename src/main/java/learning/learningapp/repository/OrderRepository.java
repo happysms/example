@@ -72,6 +72,7 @@ public class OrderRepository {
     }
 
 
+
     //API 스펙에 의존적이어서 API스펙이 바뀌면 코드를 수정해야함 -> 재사용성이 떨어짐.
     public List<OrderSimpleQueryDto> findOrderDtos() {
         return em.createQuery("select new learning.learningapp.repository.OrderSimpleQueryDto(o.id, m.name, o.orderDate, o.status , d.address) from Order o" +
@@ -92,4 +93,13 @@ public class OrderRepository {
                 .getResultList();
     }
 
+    public List<Order> findAllWithMemberDelivery(int offset, int limit) {
+        return em.createQuery(
+                "select o from Order o" +
+                        " join fetch o.member" +
+                        " join fetch o.delivery d" ,Order.class)
+                .setFirstResult(offset)
+                .setMaxResults(limit)
+                .getResultList();
+    }
 }
